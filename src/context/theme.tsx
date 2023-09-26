@@ -57,6 +57,7 @@ export default function ThemeContextProvider({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTheme() {
   const context = useContext(ThemeContext);
 

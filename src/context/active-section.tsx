@@ -37,6 +37,7 @@ export default function ActiveSectionContextProvider({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useActiveSectionContext = () => {
   const context = useContext(ActiveSectionContext);
 
