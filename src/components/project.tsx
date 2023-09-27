@@ -1,38 +1,29 @@
-import { useRef } from "react";
 import { projectsData } from "../data";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import { FaLink } from "react-icons/fa";
 
-type ProjectProps = (typeof projectsData)[number];
+type ProjectProps = (typeof projectsData)[number] & { index: number };
 
 export default function Project({
   title,
   description,
   tags,
   imageUrl,
-  link
+  link,
+  index,
 }: ProjectProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "1.33 1"],
-  });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
   return (
-    <a href={link} target="_blank">
     <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgess,
-        opacity: opacityProgess,
-      }}
-      className="group mb-5 sm:mb-8 last:mb-0"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.05, duration: 0.65, ease: "easeIn" }}
+      viewport={{once:true}}
+      className="group mb-5 sm:mb-6 last:mb-0"
     >
       <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative min-h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">
         <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
           <h3 className="text-2xl font-semibold">{title}</h3>
-          <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
+          <p className="mt-2 leading-relaxed text-gray-700 w-11/12 sm:w-full dark:text-white/70">
             {description}
           </p>
           <ul className="flex flex-wrap mt-5 gap-2 ">
@@ -48,9 +39,9 @@ export default function Project({
         </div>
 
         <img
-          src={imageUrl ?? 'yt'}
+          src={imageUrl}
           alt="Project I worked on"
-          className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
+          className="sm:absolute block max-h-[20rem] object-contain bottom-0 sm:top-8 sm:bottom-0 w-[20rem] -right-40 sm:w-[28.25rem] rounded-t-lg 
         transition 
         group-hover:scale-[1.04]
         group-hover:-translate-x-3
@@ -63,8 +54,14 @@ export default function Project({
 
         group-even:right-[initial] group-even:-left-40"
         />
+        <a
+          href={link}
+          target="_blank"
+          className="bg-gray-300 rounded-full absolute top-6 right-6 z-[10] flex items-center justify-center h-10 w-10"
+        >
+          <FaLink size="20" className="text-gray-900" />
+        </a>
       </section>
     </motion.div>
-    </a>
   );
 }

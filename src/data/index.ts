@@ -1,11 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-/* import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
-import { LuGraduationCap } from "react-icons/lu"; */
-import House from '../assets/houseMarketplace.png';
-import Insta from '../assets/instagramRn.png';
-import X from '../assets/X.png';
-import Eri from '../assets/erilearn_website.png';
+import House from "../assets/houseMarketplace.png";
+import Insta from "../assets/instagramRn.png";
+import X from "../assets/X.png";
+import Eri from "../assets/erilearn_website.png";
+import zuri from "../assets/zuri.jpeg";
+import gdscu from "../assets/gdsc.jpeg";
+import eridan from "../assets/eridan.jpeg";
+import SmStore from '../assets/smstore.png';
+import React from "react";
 export const links = [
   {
     name: "Home",
@@ -23,42 +24,60 @@ export const links = [
     name: "Skills",
     hash: "#skills",
   },
-  /* {
+  {
     name: "Experience",
     hash: "#experience",
-  }, */
+  },
   {
     name: "Contact",
     hash: "#contact",
   },
 ] as const;
 
-/* export const experiencesData = [
+export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
-    description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2019",
+    company: "GDSCU (Google Developer Student's Club)",
+    title: "Front-End Developer Intern",
+    location: "Ogun, NGA",
+    description: `As a member of the Google developer students club at Covenant university, I was tasked with daily projects based on the React library for 30 days.
+the various challenges improved my frontend skills significantly.`,
+    image: React.createElement("img", {
+      src: gdscu,
+      alt: "gdscu",
+      className: "max-h-10 max-w-10 h-full w-[80%] object-contain m-auto block",
+    }),
+    date: "Oct 2022 - Present",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
-    description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    company: "Eridan Group",
+    title: "Front-End Developer Intern",
+    location: "Lagos, NGA",
+    description: `Worked on web-based projects using React, Next.js, and Tailwind CSS.\n
+Developed skills through practical application and real-world projects.\n
+Contributed to the creation of the Erilearn website using Next.js and TypeScript.`,
+    date: "Mar 2023 - Sep 2023(6mos)",
+    image: React.createElement("img", {
+      src: eridan,
+      alt: "eridan",
+      className: "max-h-10 max-w-10 h-full w-[80%] object-contain m-auto block",
+    }),
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
-    description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2021 - present",
+    company: "Zuri Inc.",
+    title: "Front-End Developer Intern",
+    location: "Remote",
+    description: `Introduced to front-end development through Zuri's training program.\n
+       Completed weekly tasks in HTML, CSS, and JavaScript.\n
+      Mastered UI design with HTML, styling with CSS, and interactivity with JavaScript.\n
+      Acquired practical skills for crafting engaging user interface`,
+    date: "Jun 2022 - Aug 2022(3mos)",
+    image: React.createElement("img", {
+      src: zuri,
+      alt: "zuri",
+      className: "max-h-10 max-w-10 h-full w-[80%] object-contain m-auto block",
+    }),
   },
-] as const; */
+] as const;
 
 export const projectsData = [
   {
@@ -66,16 +85,16 @@ export const projectsData = [
     description:
       "Developed a mobile app using React Native and Expo that closely replicates the functionality of Instagram.   Developed with React Native, Expo, Firebase.",
     tags: ["React", "React Native", "Firebase", "Expo", "Typescript"],
-   imageUrl: Insta,
-   link: 'https://github.com/Nathan-Somto/Instagram-rn-clone'
+    imageUrl: Insta,
+    link: "https://github.com/Nathan-Somto/Instagram-rn-clone",
   },
   {
     title: "House Marketplace",
     description:
       "Developed a web app using Firebase, Next.js, and TypeScript that allows for buying, renting, and selling houses. ",
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "Firebase"],
-     imageUrl: House,
-   link: 'https://house-marketplace-topaz-sigma.vercel.app/'
+    imageUrl: House,
+    link: "https://house-marketplace-topaz-sigma.vercel.app/",
   },
   {
     title: "Twitter Clone",
@@ -83,15 +102,21 @@ export const projectsData = [
       "Developed a fullstack MERN Twitter(X) clone with Next js as the fullstack framework.",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Next-Auth"],
     imageUrl: X,
-    link: 'https://github.com/Nathan-Somto/Twitter-Clone'
+    link: "https://github.com/Nathan-Somto/Twitter-Clone",
   },
   {
-    title: 'Erilearn Website',
+    title: "Erilearn Website",
     description:
-    "Developed a website for a career accelarator program called Erilearn.",
+      "Developed a website for a career accelarator program called Erilearn.",
     tags: ["React", "TypeScript", "Next.js", "Tailwind"],
     imageUrl: Eri,
-    link: 'https://erilearn-website.vercel.app/home'
+    link: "https://erilearn-website.vercel.app/home",
+  },{
+    title: "SmStore",
+    description: "Developed an Ecommerce Front-End for a fictional store called SmStore.",
+    tags: ["React", "TypeScript", "Redux", "Tailwind",'Redux Toolkit','React-Router-Dom'],
+    imageUrl:SmStore,
+    link: "https://fake-store-blond-pi.vercel.app/"
   }
 ] as const;
 

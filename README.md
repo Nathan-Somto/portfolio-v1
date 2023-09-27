@@ -1,4 +1,4 @@
 # Portfolio Website
 
-Version 1 of my Portfolio Website built in under 7 hours.
+My Portfolio Website, Check it out to see all the awesome stuff I have built.
 

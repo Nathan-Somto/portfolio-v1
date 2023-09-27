@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
@@ -8,39 +8,59 @@ import ProfileImg from "../assets/profile_image.jpeg"
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-
+  const container: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.13,
+        delayChildren:0.2,
+        duration:0.65
+      }
+    }
+  }
+  
+  const item = {
+    hidden: { opacity: 0, y: 200 },
+    show: { opacity: 1, y: 0 , transition:{
+      duration:0.85,
+      ease:'easeIn'
+    }}
+  }
   return (
-    <section
+    <motion.section
+      variants={container}
+      initial={'hidden'}
+      animate={'show'}
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-28 max-w-[50rem] scroll-mt-[100rem] text-center  sm:mb-0"
     >
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
             transition={{
-              type: "tween",
-              duration: 0.2,
+              duration: 0.65,
+              delay:0.35
             }}
           >
             <img
               src={ProfileImg}
               alt="Somtochi Mkparu"
-              className="h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+              className="sm:h-48 sm:w-48 h-32 w-32 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
             />
           </motion.div>
 
           <motion.span
-            className="absolute bottom-0 right-0 text-4xl"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="absolute bottom-0 right-0  block text-4xl sm:text-5xl"
+            initial={{rotate: 0 }}
+            animate={{ rotate: [0,60,0] }}
             transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
+              delay: 1.2,
               duration: 0.7,
+              ease:'easeIn'
             }}
           >
             👋
@@ -50,22 +70,17 @@ export default function Intro() {
 
       <motion.h1
         className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+        variants={item}
       >
         <span className="font-bold">Hello, I'm Somto</span> I'm a{" "}
-        <span className="font-bold">full-stack developer</span> I enjoy
-        building <span className="italic">sites & apps</span>. My focus is{" "}
+        <span className="font-bold">full-stack developer</span> I love
+        building <span className="italic">websites & mobile apps</span>. My primary focus is{" "}
         <span className="underline">React</span>.
       </motion.h1>
 
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
+        variants={item}
       >
         <a
           href="#contact"
@@ -104,6 +119,6 @@ export default function Intro() {
           <FaGithubSquare />
         </a>
       </motion.div>
-    </section>
+    </motion.section>
   );
 }
