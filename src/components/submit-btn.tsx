@@ -2,8 +2,8 @@
 import { FaPaperPlane } from "react-icons/fa";
 
 
-export default function SubmitBtn({pending}:{pending:boolean}) {
-
+export default function SubmitBtn({ pending }: { pending: boolean }) {
+  console.log('pending', pending);
   return (
     <button
       type="submit"

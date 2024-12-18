@@ -1,7 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@layer base {
+  h1 {
+    @apply font-semibold;
+  }
+  h2 {
+    @apply font-semibold;
+  }
+  h3 {
+    @apply font-medium;
+  }
+  h4 {
+    @apply font-medium;
+  }
+  p {
+    @apply font-normal text-base;
+  }
+}
 html {
   --line-color: #e5e7eb;
 }
@@ -12,4 +28,20 @@ html.dark {
 
 .borderBlack {
   @apply border border-black/10;
+}
+.stars-anim {
+  animation: twinkle 2.7s ease infinite alternate;
+}
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.montserrat {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
