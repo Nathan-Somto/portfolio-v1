@@ -1,5 +1,5 @@
 import SectionHeading from "./section-heading";
-import { skillsData } from "../data";
+import { toolsData } from "../data";
 import { useSectionInView } from "../hooks";
 import { motion } from "framer-motion";
 
@@ -22,15 +22,15 @@ export default function Skills() {
 
   return (
     <section
-      id="skills"
+      id="tools"
       ref={ref}
-      className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
+      className="mb-28 px-12 max-w-3xl mx-auto sticky top-20 scroll-mt-28 text-center sm:mb-40"
     >
-      <SectionHeading>My skills</SectionHeading>
+      <SectionHeading text="Tools" />
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-        {skillsData.map((skill, index) => (
+        {toolsData.map((tool, index) => (
           <motion.li
-            className="bg-white  borderBlack rounded-xl px-5 py-3 dark:bg-white/10  dark:text-white/80"
+            className="size-6"
             key={index}
             variants={fadeInAnimationVariants}
             initial="initial"
@@ -39,8 +39,12 @@ export default function Skills() {
               once: true,
             }}
             custom={index}
+            data-blobity-tooltip={tool.tooltip}
+            data-blobity-offset-x={3}
+            data-blobity-offset-y={0}
+            data-blobity-magnetic="false"
           >
-            {skill}
+            <img src={tool.icon} alt={`${tool.tooltip} logo`} />
           </motion.li>
         ))}
       </ul>

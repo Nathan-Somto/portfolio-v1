@@ -5,27 +5,77 @@ import Footer from "../components/footer";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import Projects from "../components/projects";
-import SectionDivider from "../components/section-divider";
-import Skills from "../components/skills";
-import ThemeSwitch from "../components/theme-switch";
-
+import Tools from "../components/tools";
+import StarParticles from "../components/stars";
+import { motion } from 'framer-motion'
+import useBlobity from "blobity/lib/react/useBlobity";
+import GithubStats from "../components/github-stats";
+import React from "react";
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
+import SpotifyStats from "../components/spotify-stats";
 export default function Home() {
+  React.useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.2,
+      syncTouch: true,
+      duration: 0.3
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, [])
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  useBlobity({
+    color: '#fff',
+    dotColor: '#444',
+    dotSize: 7,
+    zIndex: 300,
+    focusableElementsOffsetX: 8,
+    focusableElementsOffsetY: 3,
+    licenseKey: 'opensource',
+    magnetic: true,
+    invert: true,
+    mode: 'bouncy',
+    radius: 15,
+    focusableElements:
+      "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
+    fontSize: 14,
+    size: 40,
+  })
   return (
-    <>
-      <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
-      <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+    <motion.div
+      initial={{
+        opacity: 0
+      }}
+      animate={{
+        opacity: 1
+      }}
+      transition={{
+        delay: 0.25,
+        duration: 0.65,
+        ease: 'easeIn'
+      }}
+    >
+      <StarParticles />
       <Navbar />
-      <main className="flex flex-col items-center px-4 ">
-        <Hero />
-        <SectionDivider />
+      <Hero />
+      <main>
         <About />
         <Projects />
         <Experience />
-        <Skills />
+        <Tools />
+        <GithubStats />
+        <SpotifyStats />
         <Contact />
       </main>
       <Footer />
-      <ThemeSwitch />
-    </>
+    </motion.div>
   );
 }
