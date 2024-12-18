@@ -19,7 +19,7 @@ export const links = [
   {
     name: 'Download Resume',
     Icon: FaFilePdf,
-    hash: '/CV.pdf'
+    hash: '/https://drive.google.com/file/d/1YqQ6Dd_lCfEqWmTugW7L9zfHJhVdPp5r/view?usp=drive_link'
   },
   {
     name: "Home",
