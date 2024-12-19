@@ -16,7 +16,10 @@ export default function SectionHeading({ text, className }: SectionHeadingProps)
 
   }
   return (
-    <motion.h2 className={`lg:text-8xl md:text-7xl text-5xl font-medium capitalize lg:mb-20 md:mb-16 mb-12 lg:leading-[80px] text-center overflow-hidden py-1 , ${className && className}`}>
+    <motion.h2
+      aria-label={text}
+      role="heading"
+      className={`lg:text-8xl md:text-7xl text-5xl font-medium capitalize lg:mb-20 md:mb-16 mb-12 lg:leading-[80px] text-center overflow-hidden py-1 lg:py-4 , ${className && className}`}>
       {
         text.split(' ').map((word, i) => (
           <motion.span
@@ -25,6 +28,7 @@ export default function SectionHeading({ text, className }: SectionHeadingProps)
             initial="initial"
             whileInView="enter"
             variants={animation}
+            viewport={{ once: true }}
             className="inline-block mr-2 md:mr-4 lg:mr-5 last:!mr-0"
           >
             {word + ' '}

@@ -34,6 +34,7 @@ export default function Navbar() {
             data-blobity-invert="false"
             data-blobity-color="#000"
             data-blobity-magnetic="false"
+            role="navigation"
           >
             <a
               className={clsx(

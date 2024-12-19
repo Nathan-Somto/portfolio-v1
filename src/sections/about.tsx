@@ -1,8 +1,8 @@
-import SectionHeading from "./section-heading";
+import SectionHeading from "../components/section-heading";
 import { motion, useScroll, useMotionValue, useMotionValueEvent } from "framer-motion";
 import { info } from "../data";
 import React from "react";
-import AboutText from "./about-text";
+import AboutText from "../components/about-text";
 
 
 export default function About() {
@@ -12,7 +12,7 @@ export default function About() {
     target: containerRef,
     offset: ["start", "end 0.15"],
   });
-  const backgroundColour = useMotionValue('rgb(0 0 0 /0.3');
+  const backgroundColour = useMotionValue('rgb(0 0 0 0.3)');
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const sectionHeight = 1 / info.length;
     const index = Math.floor(latest / sectionHeight);
@@ -24,15 +24,14 @@ export default function About() {
       backgroundColour.set('rgb(0 0 0)');
     }
     if (latest <= window.innerHeight * 1.3) {
-      backgroundColour.set('rgb(0 0 0 0.3');
+      backgroundColour.set('rgb(0 0 0 0.3)');
     }
   });
-
   return (
     <motion.section
       style={{ backgroundColor: backgroundColour }}
       ref={containerRef}
-      className="relative w-full pt-10 z-[8] text-center bg-black text-white leading-8"
+      className="relative mb-32 w-full pt-10 z-[8] text-center bg-black  leading-8"
       id="about"
       transition={{ duration: 0.45, ease: 'easeIn' }}
     >
@@ -40,14 +39,19 @@ export default function About() {
         text='Who Am I?'
         animate={false}
       />
-      <div className="flex flex-col md:flex-row relative max-w-4xl mx-auto gap-10 mt-40">
+      <motion.div
+        initial={{ y: 150, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.65, delay: 0.15 }}
+        /*  viewport={{ amount: 'all' }} */
+        className="flex flex-col md:flex-row z-[4] relative max-w-4xl mx-auto gap-10 mt-40">
         {/* Image Section */}
-        <div className="md:sticky hidden md:block md:top-28 flex-shrink-0 w-72 h-72">
+        <div className="md:sticky hidden md:block overflow-hidden  md:top-28 flex-shrink-0 w-72 h-72">
           <motion.img
             key={currentIndex === 0 || currentIndex === 1 ? 0 : currentIndex}
             src={info[currentIndex]?.image}
             alt={info[currentIndex]?.title}
-            className="object-contain w-full h-full"
+            className="object-contain w-full h-full rounded-lg"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
@@ -55,7 +59,7 @@ export default function About() {
           />
         </div>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-10 md:gap-0">
           {info.map(({ title, text, image }, index) => (
             <React.Fragment
               key={text + title}
@@ -82,9 +86,8 @@ export default function About() {
               />
             </React.Fragment>
           ))}
-          {/* <div className="h-[50vh] sticky top-28 bg-black z-[25]"></div> */}
         </div>
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

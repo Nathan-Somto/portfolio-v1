@@ -2,7 +2,7 @@ import "./App.css";
 import ActiveSectionContextProvider from "./context/active-section";
 import ThemeContextProvider from "./context/theme";
 import { Toaster } from "react-hot-toast";
-import Loader from "./components/loader";
+import Loader from "./pages/loader";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import { AnimatePresence } from "framer-motion";

@@ -5,9 +5,7 @@ import Eri from "../assets/erilearn_website.png";
 import zuri from "../assets/zuri.jpeg";
 import eridan from "../assets/eridan.jpeg";
 import Chatly from '../assets/chatly.png';
-import Arsenal from "../assets/arsenal.svg";
 import Me from "../assets/about.jpg";
-import StarWars from "../assets/starwars.svg";
 import ForgeGen from '../assets/forge-gen.png';
 import designr from '../assets/designr.png';
 import simplify from '../assets/simplify.png';
@@ -289,15 +287,5 @@ export const info = [
     title: "My Journey",
     text: `I started my journey in tech back in 2021. What got me into tech was my curiosity about how applications we use every day are built. Over time, I’ve worked on various projects and picked up skills in different technologies. It's been a challenging but rewarding experience.`,
     image: Me,
-  },
-  {
-    title: "My Football Club",
-    text: `I’ve been a fan of Arsenal Football Club since 2010. Supporting the team has taught me patience, resilience, and how to keep believing even when things get tough😂. I trust the process and always back the team no matter what.💪`,
-    image: Arsenal,
-  },
-  {
-    title: "Favorite Movie Franchise",
-    text: `I’ve always been a fan of Star Wars. The mix of adventure, storytelling, and memorable characters keeps me coming back. It’s my go-to franchise for inspiration and entertainment. May the force be with you.`,
-    image: StarWars,
-  },
+  }
 ];
