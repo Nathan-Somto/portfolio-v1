@@ -78,7 +78,6 @@ export default function Loader() {
           exit="exit"
           key={location.pathname}
           className="fixed inset-0 bg-black z-50 flex flex-col h-screen"
-        //onAnimationComplete={() => navigate("/home")}
         >
           {[...Array(6)].map((_, i) => (
             <motion.div key={i} custom={i}
@@ -91,7 +90,7 @@ export default function Loader() {
             {text.map((t, i) => (
               <motion.div
                 key={i}
-                className="text-black text-lg md:text-xl lg:text-3xl font-bold mx-1 lg:mx-2"
+                className="text-black text-sm sm:text-lg md:text-xl lg:text-3xl font-bold mx-1 lg:mx-2"
                 initial={{ y: 100, skewY: -25 }}
                 animate={{
                   y: 0, skewY: 0,

@@ -99,7 +99,7 @@ export default function Project({
         <img
           src={imageUrl}
           alt={`${title} preview`}
-          className={`block  md:mb-8  overflow-hidden  self-end max-h-[22rem] object-contain object-center w-full max-w-[20rem] md:max-w-[28.25rem] rounded-lg 
+          className={`block  md:mb-8  overflow-hidden  self-end max-h-[25rem] object-contain object-center w-[95%] max-w-lg md:w-full  md:max-w-[28.25rem] rounded-lg 
           transition 
           group-hover:scale-[1.04]
           group-hover:-translate-x-3

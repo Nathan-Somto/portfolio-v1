@@ -1,7 +1,6 @@
-import SectionHeading from "./section-heading";
-import { motion } from "framer-motion";
+import SectionHeading from "../components/section-heading";
 import { useSectionInView } from "../hooks";
-import SubmitBtn from "./submit-btn";
+import SubmitBtn from "../components/submit-btn";
 import toast from "react-hot-toast";
 import React from "react";
 import emailjs from '@emailjs/browser';
@@ -65,55 +64,53 @@ export default function Contact() {
 
 
   return (
-    <motion.section
+    <section
       id="contact"
       ref={ref}
-      className="mb-20 px-12  bg-black  pb-14 w-[min(100%,42rem)] mx-auto sticky top-20 pt-10 scroll-mt-28 text-center sm:mb-40"
-      initial={{ opacity: 0, y: 150 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.25, duration: 0.7 }}
+      className="mb-28 px-12 bg-black  pb-14 mx-auto sticky top-28 pt-14 scroll-mt-28 text-center sm:mb-40"
     >
-      <SectionHeading text="Contact" />
+      <div className="w-[min(100%,42rem)] mx-auto">
+        <SectionHeading text="Contact" />
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:mkparusomtochi26@gmail.com">
-          mkparusomtochi26@gmail.com
-        </a>{" "}
-        or through this form.
-      </p>
+        <p className="-mt-6 opacity-70">
+          Please contact me directly at{" "}
+          <a className="underline" href="mailto:mkparusomtochi26@gmail.com">
+            mkparusomtochi26@gmail.com
+          </a>{" "}
+          or through this form.
+        </p>
 
-      <form
-        ref={formRef}
-        className="mt-10 flex flex-col dark:text-black"
-        onSubmit={handleSubmit}
-      >
-        <input
-          className="h-14 px-4 rounded-lg mb-5 borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="from_name"
-          type="text"
-          required
-          maxLength={500}
-          placeholder="Your full name"
-        />
-        <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="from_email"
-          type="email"
-          required
-          maxLength={500}
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-5  resize-none rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="message"
-          placeholder="Your message"
-          required
-          maxLength={5000}
-        />
-        <SubmitBtn pending={isPending} />
-      </form>
-    </motion.section>
+        <form
+          ref={formRef}
+          className="mt-10 flex flex-col dark:text-black"
+          onSubmit={handleSubmit}
+        >
+          <input
+            className="h-14 px-4 rounded-lg mb-5 borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            name="from_name"
+            type="text"
+            required
+            maxLength={500}
+            placeholder="Your full name"
+          />
+          <input
+            className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            name="from_email"
+            type="email"
+            required
+            maxLength={500}
+            placeholder="Your email"
+          />
+          <textarea
+            className="h-52 my-5  resize-none rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
+            name="message"
+            placeholder="Your message"
+            required
+            maxLength={5000}
+          />
+          <SubmitBtn pending={isPending} />
+        </form>
+      </div>
+    </section>
   );
 }

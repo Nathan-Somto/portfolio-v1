@@ -12,8 +12,9 @@ export default function Header() {
   })
   const containerY = useTransform(scrollY, [0, 300], ['0%', '35%'])
   const brightnessValue = useTransform(scrollY, [0, 350], [1, 0.12]);
-  const containerScale = useTransform(scrollY, [0, 300], [1, 0.95]);
-  const textX = useTransform(scrollY, [0, 250], ['0%', '-150%']);
+  const btmBrightness = useTransform(scrollY, [0, 300], [1, 0])
+  const containerScale = useTransform(scrollY, [0, 300], [1, 0.9]);
+  const textX = useTransform(scrollY, [0, 300], ['0%', '-200%']);
   const figureHeight = useTransform(scrollY, [0, 250], [350, window.innerHeight]);
   const figureWidth = useTransform(scrollY, [0, 250], [300, window.innerWidth]);
   return (
@@ -25,7 +26,7 @@ export default function Header() {
           scale: containerScale,
           willChange: 'transform filter',
         }}
-        className=' px-2  h-screen z-[10] top-0  bg-[#202020] pt-20 relative w-full text-white justify-between flex flex-col overflow-hidden'>
+        className=' px-2  min-h-screen z-[10] top-0  bg-[#202020] pt-20 relative w-full  justify-between flex  overflow-hidden'>
         <div className="bg-[#202020]/30 backdrop-blur-lg absolute inset-0 pointer-events-auto z-[2] h-full w-full"></div>
         <motion.h2
           data-blobity-radius={70}
@@ -50,10 +51,14 @@ export default function Header() {
           />
           <div className="bg-black/50 w-full h-full absolute top-0 left-0 z-[9]"></div>
         </motion.figure>
-        <div className="flex flex-col z-[3] absolute bottom-0 text-left lg:flex-row lg:justify-between items-center h-20 w-full px-4">
+        <motion.div
+          style={{
+            opacity: btmBrightness
+          }}
+          className="flex flex-col z-[8] self-end text-left lg:flex-row lg:justify-between items-center h-20 w-full px-4">
           <p className="text-sm sm:text-lg font-light">Full-Stack Developer based in Lagos, Nigeria.</p>
           <p className="text-sm sm:text-lg font-light">Focuses on web and mobile applications</p>
-        </div>
+        </motion.div>
       </motion.header>
     </div>
   )

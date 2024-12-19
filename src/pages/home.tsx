@@ -1,53 +1,38 @@
-import About from "../components/about";
-import Contact from "../components/contact";
-import Experience from "../components/experience";
+import About from "../sections/about";
+import Contact from "../sections/contact";
+import Experience from "../sections/experience";
 import Footer from "../components/footer";
-import Hero from "../components/hero";
+import Hero from "../sections/hero";
 import Navbar from "../components/navbar";
-import Projects from "../components/projects";
+import Projects from "../sections/projects";
 import Tools from "../components/tools";
 import StarParticles from "../components/stars";
 import { motion } from 'framer-motion'
 import useBlobity from "blobity/lib/react/useBlobity";
-import GithubStats from "../components/github-stats";
+import GithubStats from "../sections/github-stats";
 import React from "react";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
-import SpotifyStats from "../components/spotify-stats";
+import SpotifyStats from "../sections/spotify-stats";
 export default function Home() {
-  React.useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.2,
-      syncTouch: true,
-      duration: 0.3
-    });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, [])
   React.useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
   useBlobity({
     color: '#fff',
-    dotColor: '#444',
-    dotSize: 7,
-    zIndex: 300,
-    focusableElementsOffsetX: 8,
+    dotColor: '#555',
+    dotSize: 10,
+    zIndex: 5000000,
+    focusableElementsOffsetX: 5,
     focusableElementsOffsetY: 3,
     licenseKey: 'opensource',
     magnetic: true,
     invert: true,
     mode: 'bouncy',
-    radius: 15,
+    radius: 25,
     focusableElements:
       "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
     fontSize: 14,
     size: 40,
+    kineticMorphing: true
   })
   return (
     <motion.div
@@ -58,7 +43,6 @@ export default function Home() {
         opacity: 1
       }}
       transition={{
-        delay: 0.25,
         duration: 0.65,
         ease: 'easeIn'
       }}
