@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion'
 const StarParticles = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,14 +14,13 @@ const StarParticles = () => {
             canvas.height = window.innerHeight;
 
             const stars: { x: number, y: number, radius: number }[] = [];
-            const numStars = 50; // Number of star particles
+            const numStars = 50;
 
-            // Function to create a star particle
             const createStar = () => {
                 return {
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    radius: Math.random() * 1.5, // Random size between 1 and 2
+                    radius: Math.random() * 1.5,
                 };
             };
 
@@ -39,8 +38,6 @@ const StarParticles = () => {
                     ctx.fill();
                 });
             };
-
-            // Animation loop
             const animate = () => {
                 drawStars();
                 requestAnimationFrame(animate);
@@ -48,11 +45,10 @@ const StarParticles = () => {
 
             animate();
 
-            // Handle window resize
             const handleResize = () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
-                stars.length = 0; // Clear the stars array
+                stars.length = 0;
                 for (let i = 0; i < numStars; i++) {
                     stars.push(createStar());
                 }
@@ -69,21 +65,25 @@ const StarParticles = () => {
         <motion.div
             initial={{
                 opacity: 0.3,
-                x: 0
+                x: 100,
+                animationDirection: 'alternate'
             }}
             animate={{
                 opacity: 1,
                 x: -50,
                 animationDirection: 'alternate',
                 transitionEnd: {
-                    x: 50
+                    x: -100,
+                    opacity: 0.5
                 }
             }}
             transition={{
                 repeat: Infinity,
-                duration: 7,
-                ease: 'linear'
+                duration: 7.5,
+                ease: 'linear',
+                repeatType: 'loop',
             }}
+            //className='stars-anim'
             style={{
                 display: 'block',
                 width: "100%",

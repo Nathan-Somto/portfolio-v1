@@ -1,4 +1,3 @@
-import React from 'react'
 import SectionHeading from '../components/section-heading'
 
 export default function SpotifyStats() {

@@ -49,7 +49,7 @@ Contributed to the creation of the Erilearn website using Next.js and TypeScript
     image: React.createElement("img", {
       src: eridan,
       alt: "eridan",
-      className: "h-10 w-10  rounded-full object-contain m-auto block",
+      className: "h-10 w-10  rounded-full object-cover object-center m-auto block",
     }),
   },
   {
@@ -64,7 +64,7 @@ Contributed to the creation of the Erilearn website using Next.js and TypeScript
     image: React.createElement("img", {
       src: zuri,
       alt: "zuri",
-      className: "h-10 w-10 rounded-full h-full  object-contain m-auto block",
+      className: "h-10 w-10 rounded-full   object-cover object-center m-auto block",
       "data-blobity-size": 100
     }),
   },
@@ -77,7 +77,8 @@ export const projectsData = [
       "An Instagram Clone that offers a subset of features such as posting, commenting, reels, realtime feed and likes.  Firebase and Expo power this app.",
     tags: ["React", "React Native", "Firebase", "Expo", "Typescript"],
     imageUrl: Insta,
-    link: "https://github.com/Nathan-Somto/Instagram-rn-clone",
+    github: `${githubBaseUrl}/Instagram-rn-clone`,
+    link: null
   },
   {
     title: "Chatly",
@@ -93,7 +94,7 @@ export const projectsData = [
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "MongoDB", "Prisma", "Stripe", 'Auth.js'],
     comingSoon: true,
     link: null,
-    github: `${githubBaseUrl}/euphoria-ecommerce`,
+    github: `${githubBaseUrl}/euphoria-ecommerce-store`,
     imageUrl: euphoria
   },
   {
@@ -102,7 +103,7 @@ export const projectsData = [
     tags: ['React', 'Typescript', 'Convex', 'Next.js', 'Shadcn-ui', 'Fabric.js', 'Turbo-Repo', 'Zustand', 'TailwindCSS', 'Stripe'],
     comingSoon: true,
     link: null,
-    githubBaseUrl: `${githubBaseUrl}/designr`,
+    github: `${githubBaseUrl}/designr`,
     imageUrl: designr
   },
   {
@@ -119,7 +120,7 @@ export const projectsData = [
     description: "Forge-Gen is an AI-Powered Image Transformation Mobile App that aids users in transforming their images using AI.",
     tags: ['React', 'React-Native', 'Typescript', 'Expo', 'Appwrite', 'Cloudinary', 'Vercel-Functions'],
     imageUrl: ForgeGen,
-    githubBaseUrl: `${githubBaseUrl}/Forge-Gen/`,
+    github: `${githubBaseUrl}/Forge-Gen/`,
     link: 'https://expo.dev/accounts/nathansomto/projects/forge-gen/builds/bd22832f-9039-48d6-815d-c3ad16413d54'
   },
   {
@@ -128,7 +129,8 @@ export const projectsData = [
       "A Full-Stack (MERN) clone of the popular social media app X(formerly twitter), equipped with features such as tweeting, follow, unfollow, likes, profile management and real-time notifications.",
     tags: ["React", "Next.js", "MongoDB", "Tailwind", "Next-Auth", 'Uploadthing'],
     imageUrl: X,
-    link: "https://github.com/Nathan-Somto/Twitter-Clone",
+    github: `${githubBaseUrl}/Twitter-Clone`,
+    link: "https://x-clone-six.vercel.app/"
   },
   {
     title: "Erilearn Website",
@@ -137,6 +139,7 @@ export const projectsData = [
     tags: ["React", "TypeScript", "Next.js", "Tailwind", 'Framer-Motion'],
     imageUrl: Eri,
     link: "https://erilearn-website.vercel.app/home",
+    github: `${githubBaseUrl}/erilearn-website`
   },
   {
     title: "Simplify",
@@ -144,7 +147,7 @@ export const projectsData = [
     tags: ["React", "Tailwind", "Framer Motion"],
     imageUrl: simplify,
     link: "https://simplify-plum.vercel.app/",
-    github: `/simplify`
+    github: `${githubBaseUrl}/simplify`
   }
 ];
 
