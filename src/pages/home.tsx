@@ -25,14 +25,16 @@ export default function Home() {
     focusableElementsOffsetY: 3,
     licenseKey: 'opensource',
     magnetic: true,
+    font: "Montserrat",
     invert: true,
     mode: 'bouncy',
-    radius: 25,
+    radius: 18,
     focusableElements:
       "[data-blobity], a:not([data-no-blobity]), h4:not([data-no-blobity]), li:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]",
-    fontSize: 14,
-    size: 40,
-    kineticMorphing: true
+    fontSize: 16,
+    size: 36,
+    kineticMorphing: true,
+    fontColor: '#00000080'
   })
   return (
     <motion.div

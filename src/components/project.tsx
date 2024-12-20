@@ -20,32 +20,30 @@ export default function Project({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.65, ease: "easeInOut" }}
       viewport={{ once: true }}
-      className="group mb-5 md:mb-10 last:mb-0 "
+      className="group mb-5 lg:mb-10 last:mb-0 "
     >
-      <section className="bg-gray-100 gap-y-12 md:gap-y-0 gap-x-0 md:gap-x-6 grid md:grid-cols-2 max-w-4xl border border-black/20 rounded-lg overflow-hidden md:px-8 py-7 px-5 md:py-12 relative min-h-[24rem] hover:bg-gray-200 transition  dark:text-white bg-white/10 hover:bg-white/20 mx-auto">
+      <section className="bg-gray-100 gap-y-12 lg:gap-y-0 gap-x-0 lg:gap-x-6 grid lg:grid-cols-2 max-w-4xl border border-black/20 rounded-lg overflow-hidden lg:px-8 py-7 px-5 lg:py-12 relative min-h-[24rem]  transition   bg-white/10 hover:bg-white/20 mx-auto">
         <div className="justify-start  flex flex-col h-full">
-          <div className={`flex gap-x-3 md:gap-x-5 mb-5 md:mb-10 ${index % 2 != 1 ? 'justify-end' : ''}`}>
+          <div className={`flex gap-x-3 lg:gap-x-5 mb-5 lg:mb-10 ${index % 2 != 1 ? 'justify-end' : ''}`}>
 
-            {comingSoon ? (
-              <a className=" flex rounded-xl items-center text-gray-950  bg-white px-2 md:px-5 md:py-1.5 lg:px-6 lg:py-2">
-                <h3 className="text-md md:text-[15.5px] ">
-                  Coming soon
-                </h3>
+            {comingSoon || link === null ? (
+              <a className=" flex rounded-xl items-center text-gray-950  bg-white px-2 lg:px-3 text-[0.8rem] lg:text-[0.9rem] font-medium">
+                Coming soon
               </a>
             ) : <a
-              href={link ?? ''}
+              href={link}
               target="_blank"
-              className="bg-gray-400 rounded-full z-[10] flex items-center justify-center h-10 w-10 md:h-14 md:w-14"
+              className="bg-gray-400 rounded-full z-[10] flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14"
             >
-              <FaLink size="28" className="text-gray-950 md:h-7 md:w-7 w-5 h-5" />
+              <FaLink size="28" className="text-gray-950 lg:h-7 lg:w-7 w-5 h-5" />
             </a>
             }
             <a
-              href={github ?? ''}
+              href={github}
               target="_blank"
-              className="bg-gray-400 rounded-full z-[10] flex items-center justify-center h-10 w-10 md:h-14 md:w-14"
+              className="bg-gray-400 rounded-full z-[10] flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14"
             >
-              <FaGithub className="text-gray-950 md:h-7 md:w-7 w-5 h-5" />
+              <FaGithub className="text-gray-950 lg:h-7 lg:w-7 w-5 h-5" />
             </a>
           </div>
           <motion.h3
@@ -62,7 +60,7 @@ export default function Project({
             {title}
           </motion.h3>
           <motion.p
-            className="mt-2 leading-relaxed text-gray-700 w-11/12 md:w-full dark:text-white/70"
+            className="mt-2 leading-relaxed  w-11/12 lg:w-full text-white/70"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -87,7 +85,7 @@ export default function Project({
                   ease: "easeOut",
                 }}
                 viewport={{ once: true }}
-                className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+                className="bg-black/70 px-3 py-1 text-[0.7rem] uppercase tracking-wider rounded-full text-white/70"
                 key={index}
               >
                 {tag}
@@ -95,18 +93,20 @@ export default function Project({
             ))}
           </motion.ul>
         </div>
-
-        <img
-          src={imageUrl}
-          alt={`${title} preview`}
-          className={`block  md:mb-8  overflow-hidden  self-end max-h-[25rem] object-contain object-center w-[95%] max-w-lg md:w-full  md:max-w-[28.25rem] rounded-lg 
+        <figure className={`block  lg:mb-8 relative group/image h-full  self-end max-h-[25rem]  w-[95%] max-w-lg lg:w-full  lg:max-w-[28.25rem] rounded-lg 
           transition 
           group-hover:scale-[1.04]
           group-hover:-translate-x-3
           group-hover:translate-y-3
           group-even:group-hover:translate-x-3
-          group-even:group-hover:translate-y-3 ${index % 2 != 1 ? 'order-first md:mr-8' : ''}`}
-        />
+          group-even:group-hover:translate-y-3 ${index % 2 != 1 ? 'order-first lg:mr-8' : ''}`}>
+          <img
+            id={`${title}-image`}
+            src={imageUrl}
+            alt={`${title} preview`}
+            className={'h-full w-full object-contain  object-center'}
+          />
+        </figure>
       </section>
     </motion.div>
   );

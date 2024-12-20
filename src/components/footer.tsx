@@ -10,9 +10,9 @@ export default function Footer() {
         />
         <p className="text-center opacity-80 ">You can follow me on any of the following platforms</p>
       </div>
-      <div className="flex lg:flex-row text-gray-500 flex-col w-full mt-5 items-center lg:justify-between px-16">
+      <div className="flex lg:flex-row text-[#707070] flex-col w-full mt-5 items-center lg:justify-between px-16">
         <div
-          className="flex gap-4 mb-5 lg:justify-start justify-center"
+          className="flex gap-4 mb-5  lg:justify-start justify-center"
         >
           {
             socials.map(({ icon: Icon, link, tooltip }, index) => (
@@ -21,7 +21,7 @@ export default function Footer() {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block hover:text-gray-900"
+                className="block hover:text-opacity-50"
                 data-blobity-tooltip={tooltip}
                 data-blobity-offset-x={0}
               >
@@ -31,7 +31,7 @@ export default function Footer() {
           }
         </div>
         <div className="text-sm">
-          <p className="mb-2 block text-sm lg:text-[15px]">
+          <p className="mb-2 block text-sm lg:text-[15px] text-opacity-70">
             &copy; {new Date().getFullYear()} Developed and Designed by Nathan-Somto
           </p>
         </div>

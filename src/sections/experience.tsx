@@ -6,12 +6,10 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { experiencesData } from "../data";
 import { useSectionInView } from "../hooks";
-import { useTheme } from "../context/theme";
 import React from "react";
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
-  const { theme } = useTheme();
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
@@ -21,33 +19,28 @@ export default function Experience() {
           <React.Fragment key={index}>
             <VerticalTimelineElement
               contentStyle={{
-                background:
-                  theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)",
+                background: "rgba(255, 255, 255, 0.1)",
                 boxShadow: "none",
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
                 padding: "1.3rem 2rem",
               }}
               contentArrowStyle={{
-                borderRight:
-                  theme === "light"
-                    ? "0.4rem solid #9ca3af"
-                    : "0.9rem solid rgba(230, 230, 230, 0.095)",
+                borderRight: "0.9rem solid rgba(230, 230, 230, 0.25)",
               }}
               date={item.date}
               icon={item.image}
               iconStyle={{
-                background:
-                  theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
+                background: "rgba(255, 255, 255, 0.15)",
                 fontSize: "1.5rem",
               }}
               iconClassName="items-center flex h-10 w-10"
 
             >
-              <h1 className="font-semibold capitalize text-xl">{item.company}</h1>
-              <h3 className="font-medium text-[17px] text-black/80 dark:text-white/70" >{item.title}</h3>
-              <p className="font-normal !text-sm !mt-0 text-gray-700  dark:text-white/75">{item.location}</p>
-              <p className="!mt-1 !text-sm !font-normal text-gray-700 dark:text-white/75">
+              <h1 className="font-semibold capitalize text-[21px]/[34px]">{item.company}</h1>
+              <h3 className="font-medium text-lg text-white/70" >{item.title}</h3>
+              <p className="font-normal !text-sm !mt-0 text-white/75">{item.location}</p>
+              <p className="!mt-1.5 !text-sm !font-normal opacity-75">
                 {item.description}
               </p>
             </VerticalTimelineElement>
