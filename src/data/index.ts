@@ -10,6 +10,8 @@ import ForgeGen from '../assets/forge-gen.png';
 import designr from '../assets/designr.png';
 import simplify from '../assets/simplify.png';
 import euphoria from '../assets/euphoria.png'
+import lectureDeck from '../assets/lectureDeck.png';
+import rivva from '../assets/rivva.svg';
 import React from "react";
 import { FaFilePdf, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const githubBaseUrl = 'https://github.com/Nathan-Somto'
@@ -38,6 +40,20 @@ export const links = [
 ];
 
 export const experiencesData = [
+  {
+    company: "RIVVA",
+    title: "Frontend Engineer (Contract)",
+    location: "Remote",
+    description: `Developed a Progressive web application (PWA) with Next.js to improve employee productivity, featuring time tracking, a task board, and AI-powered task suggestions.\n
+    Used Zustand, TanStack Query, and ShadCN UI for a smooth, responsive experience.\n
+    Implemented offline support, ran beta tests, and wrote unit tests with Jest for early bug detection.`,
+    date: "Jan 2025 - Apr 2025 (4mos)",
+    image: React.createElement("img", {
+      src: rivva,
+      alt: "rivva",
+      className: "h-10 w-10 rounded-full object-cover object-center m-auto block",
+    }),
+  },
   {
     company: "Eridan Group",
     title: "Front-End Developer Intern",
@@ -81,6 +97,24 @@ export const projectsData = [
     link: null
   },
   {
+    title: "Lecture Deck",
+    description:
+      "A community-based AI-powered platform developed for Hebron Startup Lab that generates flashcards from lecture notes to boost knowledge retention. Led a team of 12 engineers across Frontend, Backend, and AI.",
+    tags: ["React", "MySQL", "Prisma", "OpenAI", "Agile", "Jira"],
+    imageUrl: lectureDeck,
+    github: "https://github.com/hslcreators/lecturedeck-fe",
+    link: null,
+  },
+  {
+    title: 'Designr',
+    description: 'An AI powered graphic design editor, with live collaborative features and offline editing developed to help creatives bootstrap ideas.',
+    tags: ['React', 'Typescript', 'Neon', 'Postgres SQL', 'Drizzle Orm', 'Better Auth', 'Live Blocks', 'Open Ai', 'Next.js', 'Shadcn-ui', 'Fabric.js', 'Turbo-Repo', 'Zustand', 'TailwindCSS', 'Stripe'],
+    comingSoon: true,
+    link: null,
+    github: `${githubBaseUrl}/designr`,
+    imageUrl: designr
+  },
+  {
     title: "Chatly",
     description: "A full-stack chat application that helps users connect with friends and family through group chats, direct messages and live video chats.",
     tags: ["React", "TypeScript", "Node.js", "Tailwind", 'Zustand', 'React-Router-Dom', 'Clerk', 'Socket.io', 'MongoDB', 'Live-Kit'],
@@ -96,15 +130,6 @@ export const projectsData = [
     link: null,
     github: `${githubBaseUrl}/euphoria-ecommerce-store`,
     imageUrl: euphoria
-  },
-  {
-    title: 'Designr',
-    description: 'An AI powered graphic design SASS, with live collaborative features developed to help creatives bootstrap ideas.',
-    tags: ['React', 'Typescript', 'Convex', 'Next.js', 'Shadcn-ui', 'Fabric.js', 'Turbo-Repo', 'Zustand', 'TailwindCSS', 'Stripe'],
-    comingSoon: true,
-    link: null,
-    github: `${githubBaseUrl}/designr`,
-    imageUrl: designr
   },
   {
     title: "House Marketplace",
