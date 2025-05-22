@@ -10,7 +10,7 @@ import ForgeGen from '../assets/forge-gen.png';
 import designr from '../assets/designr.png';
 import simplify from '../assets/simplify.png';
 import euphoria from '../assets/euphoria.png'
-import lectureDeck from '../assets/lectureDeck.png';
+//import lectureDeck from '../assets/lectureDeck.png';
 import rivva from '../assets/rivva.svg';
 import React from "react";
 import { FaFilePdf, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
@@ -88,6 +88,32 @@ Contributed to the creation of the Erilearn website using Next.js and TypeScript
 
 export const projectsData = [
   {
+    title: "Euphoria Ecommerce Site",
+    description: 'An Ecommerce Website with a custom Admin-Panel for managing products, orders, and users. equipped with a custom payment flow using Stripe.',
+    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "MongoDB", "Prisma", "Stripe", 'Auth.js'],
+    link: 'https://euphoria-ecommerce-store.vercel.app',
+    github: `${githubBaseUrl}/euphoria-ecommerce-store`,
+    imageUrl: euphoria
+  },
+  {
+    title: "House Marketplace",
+    description:
+      "A web application that provides an online marketplace for renting, buying and selling of houses.",
+    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "Firebase", 'Leaflet'],
+    imageUrl: House,
+    link: "https://house-marketplace-topaz-sigma.vercel.app/",
+    github: `${githubBaseUrl}/house-marketplace`
+  },
+  {
+    title: "Twitter Clone",
+    description:
+      "A Full-Stack (MERN) clone of the popular social media app X(formerly twitter), equipped with features such as tweeting, follow, unfollow, likes, profile management and real-time notifications.",
+    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Next-Auth", 'Uploadthing'],
+    imageUrl: X,
+    github: `${githubBaseUrl}/Twitter-Clone`,
+    link: "https://x-clone-six.vercel.app/"
+  },
+  {
     title: "Instagram React Native Clone",
     description:
       "An Instagram Clone that offers a subset of features such as posting, commenting, reels, realtime feed and likes.  Firebase and Expo power this app.",
@@ -96,7 +122,7 @@ export const projectsData = [
     github: `${githubBaseUrl}/Instagram-rn-clone`,
     link: null
   },
-  {
+  /* {
     title: "Lecture Deck",
     description:
       "A community-based AI-powered platform developed for Hebron Startup Lab that generates flashcards from lecture notes to boost knowledge retention. Led a team of 12 engineers across Frontend, Backend, and AI.",
@@ -104,7 +130,7 @@ export const projectsData = [
     imageUrl: lectureDeck,
     github: "https://github.com/hslcreators/lecturedeck-fe",
     link: null,
-  },
+  }, */
   {
     title: 'Designr',
     description: 'An AI powered graphic design editor, with live collaborative features and offline editing developed to help creatives bootstrap ideas.',
@@ -123,24 +149,6 @@ export const projectsData = [
     github: `${githubBaseUrl}/Chatly`
   },
   {
-    title: "Euphoria Ecommerce Site",
-    description: 'An Ecommerce Website with a custom Admin-Panel for managing products, orders, and users. equipped with a custom payment flow using Stripe.',
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "MongoDB", "Prisma", "Stripe", 'Auth.js'],
-    comingSoon: true,
-    link: null,
-    github: `${githubBaseUrl}/euphoria-ecommerce-store`,
-    imageUrl: euphoria
-  },
-  {
-    title: "House Marketplace",
-    description:
-      "A web application that provides an online marketplace for renting, buying and selling of houses.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "Firebase", 'Leaflet'],
-    imageUrl: House,
-    link: "https://house-marketplace-topaz-sigma.vercel.app/",
-    github: `${githubBaseUrl}/house-marketplace`
-  },
-  {
     title: 'Forge Gen',
     description: "Forge-Gen is an AI-Powered Image Transformation Mobile App that aids users in transforming their images using AI.",
     tags: ['React', 'React-Native', 'Typescript', 'Expo', 'Appwrite', 'Cloudinary', 'Vercel-Functions'],
@@ -148,15 +156,7 @@ export const projectsData = [
     github: `${githubBaseUrl}/Forge-Gen/`,
     link: 'https://expo.dev/accounts/nathansomto/projects/forge-gen/builds/bd22832f-9039-48d6-815d-c3ad16413d54'
   },
-  {
-    title: "Twitter Clone",
-    description:
-      "A Full-Stack (MERN) clone of the popular social media app X(formerly twitter), equipped with features such as tweeting, follow, unfollow, likes, profile management and real-time notifications.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Next-Auth", 'Uploadthing'],
-    imageUrl: X,
-    github: `${githubBaseUrl}/Twitter-Clone`,
-    link: "https://x-clone-six.vercel.app/"
-  },
+
   {
     title: "Erilearn Website",
     description:
