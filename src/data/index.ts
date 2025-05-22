@@ -10,6 +10,8 @@ import ForgeGen from '../assets/forge-gen.png';
 import designr from '../assets/designr.png';
 import simplify from '../assets/simplify.png';
 import euphoria from '../assets/euphoria.png'
+//import lectureDeck from '../assets/lectureDeck.png';
+import rivva from '../assets/rivva.svg';
 import React from "react";
 import { FaFilePdf, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const githubBaseUrl = 'https://github.com/Nathan-Somto'
@@ -38,6 +40,20 @@ export const links = [
 ];
 
 export const experiencesData = [
+  {
+    company: "RIVVA",
+    title: "Frontend Engineer (Contract)",
+    location: "Remote",
+    description: `Developed a Progressive web application (PWA) with Next.js to improve employee productivity, featuring time tracking, a task board, and AI-powered task suggestions.\n
+    Used Zustand, TanStack Query, and ShadCN UI for a smooth, responsive experience.\n
+    Implemented offline support, ran beta tests, and wrote unit tests with Jest for early bug detection.`,
+    date: "Jan 2025 - Apr 2025 (4mos)",
+    image: React.createElement("img", {
+      src: rivva,
+      alt: "rivva",
+      className: "h-10 w-10 rounded-full object-cover object-center m-auto block",
+    }),
+  },
   {
     company: "Eridan Group",
     title: "Front-End Developer Intern",
@@ -72,39 +88,12 @@ Contributed to the creation of the Erilearn website using Next.js and TypeScript
 
 export const projectsData = [
   {
-    title: "Instagram React Native Clone",
-    description:
-      "An Instagram Clone that offers a subset of features such as posting, commenting, reels, realtime feed and likes.  Firebase and Expo power this app.",
-    tags: ["React", "React Native", "Firebase", "Expo", "Typescript"],
-    imageUrl: Insta,
-    github: `${githubBaseUrl}/Instagram-rn-clone`,
-    link: null
-  },
-  {
-    title: "Chatly",
-    description: "A full-stack chat application that helps users connect with friends and family through group chats, direct messages and live video chats.",
-    tags: ["React", "TypeScript", "Node.js", "Tailwind", 'Zustand', 'React-Router-Dom', 'Clerk', 'Socket.io', 'MongoDB', 'Live-Kit'],
-    imageUrl: Chatly,
-    link: "https://chatly-rkui.onrender.com/",
-    github: `${githubBaseUrl}/Chatly`
-  },
-  {
     title: "Euphoria Ecommerce Site",
     description: 'An Ecommerce Website with a custom Admin-Panel for managing products, orders, and users. equipped with a custom payment flow using Stripe.',
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Zustand", "MongoDB", "Prisma", "Stripe", 'Auth.js'],
-    comingSoon: true,
-    link: null,
+    link: 'https://euphoria-ecommerce-store.vercel.app',
     github: `${githubBaseUrl}/euphoria-ecommerce-store`,
     imageUrl: euphoria
-  },
-  {
-    title: 'Designr',
-    description: 'An AI powered graphic design SASS, with live collaborative features developed to help creatives bootstrap ideas.',
-    tags: ['React', 'Typescript', 'Convex', 'Next.js', 'Shadcn-ui', 'Fabric.js', 'Turbo-Repo', 'Zustand', 'TailwindCSS', 'Stripe'],
-    comingSoon: true,
-    link: null,
-    github: `${githubBaseUrl}/designr`,
-    imageUrl: designr
   },
   {
     title: "House Marketplace",
@@ -116,14 +105,6 @@ export const projectsData = [
     github: `${githubBaseUrl}/house-marketplace`
   },
   {
-    title: 'Forge Gen',
-    description: "Forge-Gen is an AI-Powered Image Transformation Mobile App that aids users in transforming their images using AI.",
-    tags: ['React', 'React-Native', 'Typescript', 'Expo', 'Appwrite', 'Cloudinary', 'Vercel-Functions'],
-    imageUrl: ForgeGen,
-    github: `${githubBaseUrl}/Forge-Gen/`,
-    link: 'https://expo.dev/accounts/nathansomto/projects/forge-gen/builds/bd22832f-9039-48d6-815d-c3ad16413d54'
-  },
-  {
     title: "Twitter Clone",
     description:
       "A Full-Stack (MERN) clone of the popular social media app X(formerly twitter), equipped with features such as tweeting, follow, unfollow, likes, profile management and real-time notifications.",
@@ -132,6 +113,50 @@ export const projectsData = [
     github: `${githubBaseUrl}/Twitter-Clone`,
     link: "https://x-clone-six.vercel.app/"
   },
+  {
+    title: "Instagram React Native Clone",
+    description:
+      "An Instagram Clone that offers a subset of features such as posting, commenting, reels, realtime feed and likes.  Firebase and Expo power this app.",
+    tags: ["React", "React Native", "Firebase", "Expo", "Typescript"],
+    imageUrl: Insta,
+    github: `${githubBaseUrl}/Instagram-rn-clone`,
+    link: null
+  },
+  /* {
+    title: "Lecture Deck",
+    description:
+      "A community-based AI-powered platform developed for Hebron Startup Lab that generates flashcards from lecture notes to boost knowledge retention. Led a team of 12 engineers across Frontend, Backend, and AI.",
+    tags: ["React", "MySQL", "Prisma", "OpenAI", "Agile", "Jira"],
+    imageUrl: lectureDeck,
+    github: "https://github.com/hslcreators/lecturedeck-fe",
+    link: null,
+  }, */
+  {
+    title: 'Designr',
+    description: 'An AI powered graphic design editor, with live collaborative features and offline editing developed to help creatives bootstrap ideas.',
+    tags: ['React', 'Typescript', 'Neon', 'Postgres SQL', 'Drizzle Orm', 'Better Auth', 'Live Blocks', 'Open Ai', 'Next.js', 'Shadcn-ui', 'Fabric.js', 'Turbo-Repo', 'Zustand', 'TailwindCSS', 'Stripe'],
+    comingSoon: true,
+    link: null,
+    github: `${githubBaseUrl}/designr`,
+    imageUrl: designr
+  },
+  {
+    title: "Chatly",
+    description: "A full-stack chat application that helps users connect with friends and family through group chats, direct messages and live video chats.",
+    tags: ["React", "TypeScript", "Node.js", "Tailwind", 'Zustand', 'React-Router-Dom', 'Clerk', 'Socket.io', 'MongoDB', 'Live-Kit'],
+    imageUrl: Chatly,
+    link: "https://chatly-rkui.onrender.com/",
+    github: `${githubBaseUrl}/Chatly`
+  },
+  {
+    title: 'Forge Gen',
+    description: "Forge-Gen is an AI-Powered Image Transformation Mobile App that aids users in transforming their images using AI.",
+    tags: ['React', 'React-Native', 'Typescript', 'Expo', 'Appwrite', 'Cloudinary', 'Vercel-Functions'],
+    imageUrl: ForgeGen,
+    github: `${githubBaseUrl}/Forge-Gen/`,
+    link: 'https://expo.dev/accounts/nathansomto/projects/forge-gen/builds/bd22832f-9039-48d6-815d-c3ad16413d54'
+  },
+
   {
     title: "Erilearn Website",
     description:

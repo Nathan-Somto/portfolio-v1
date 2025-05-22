@@ -26,11 +26,11 @@ export default function Project({
         <div className="justify-start  flex flex-col h-full">
           <div className={`flex gap-x-3 lg:gap-x-5 mb-5 lg:mb-10 ${index % 2 != 1 ? 'justify-end' : ''}`}>
 
-            {comingSoon || link === null ? (
+            {comingSoon ? (
               <a className=" flex rounded-xl items-center text-gray-950  bg-white px-2 lg:px-3 text-[0.8rem] lg:text-[0.9rem] font-medium">
                 Coming soon
               </a>
-            ) : <a
+            ) : link && <a
               href={link}
               target="_blank"
               className="bg-gray-400 rounded-full z-[10] flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14"
