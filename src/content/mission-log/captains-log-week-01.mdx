@@ -1,0 +1,59 @@
+---
+title: "Captain's Log — Week 01"
+date: "2026-04-07"
+tags: ["Docker", "Linux", "DevOps"]
+excerpt: "First entry in the DevOps arc. Setting up the engine room: Docker, WSL2, and the mental model shift from writing code to shipping systems."
+category: "DevOps"
+---
+
+# Captain's Log — Week 01
+
+**STARDATE:** 2026.04.07  
+**STATUS:** Operational  
+**MISSION:** DevOps Foundations  
+
+---
+
+## Engine Room Check-In
+
+Every engineer reaches a point where just writing code isn't enough. You build the thing, it runs on your machine, you push it — and then the chaos begins. Port mismatches. Missing environment variables. "It worked in staging." I've been there more times than I'd like to admit.
+
+This log marks the start of a deliberate effort to close that gap. Not to become a pure DevOps engineer — I'm a full-stack developer, that's my hull — but to understand the systems that carry my code from laptop to production.
+
+Week one: containers.
+
+---
+
+## Docker — The Fundamentals
+
+Docker isn't magic. It's isolation with a build file.
+
+```dockerfile
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["node", "dist/index.js"]
+```
+
+A few things clicked this week:
+
+1. **Layers are cached.** Copy your `package.json` before your source so npm install doesn't re-run on every code change.
+2. **`.dockerignore` matters.** Treat it like `.gitignore`. `node_modules` and `.env` have no business in your image.
+3. **Alpine is not always the answer.** Smaller image ≠ always better. Musl libc can bite you with certain native modules.
+
+---
+
+## The Mental Model Shift
+
+Writing code is building a machine. DevOps is shipping that machine somewhere it can actually run, monitored, reproducible, at scale.
+
+The shift isn't in the tools — it's in thinking about your code as an artifact that travels through environments rather than a thing that runs on *your* machine.
+
+More next week. Next target: Docker Compose for multi-service local development.
+
+---
+
+*End of log.*
