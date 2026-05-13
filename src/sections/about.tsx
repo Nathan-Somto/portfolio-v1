@@ -37,7 +37,8 @@ export default function About() {
     >
       <SectionHeading
         text='Who Am I?'
-        animate={false}
+        animate={true}
+        textClassName="text-hud-cyan"
       />
       <motion.div
         initial={{ y: 150, opacity: 0 }}

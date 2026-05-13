@@ -1,46 +1,125 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   body {
-    @apply text-[#b0b0b0] overflow-x-hidden relative bg-black;
+    @apply text-ship-text overflow-x-hidden relative bg-space-950 font-sans;
   }
-  h1 {
-    @apply font-semibold;
+  h1, h2 {
+    @apply font-display font-semibold;
   }
-  h2 {
-    @apply font-semibold;
-  }
-  h3 {
-    @apply font-medium;
-  }
-  h4 {
-    @apply font-medium;
+  h3, h4 {
+    @apply font-sans font-medium;
   }
   p {
-    @apply font-normal text-base;
+    @apply font-normal text-base text-ship-muted;
   }
 }
+
 html {
-  --line-color: rgba(255, 255, 255, 0.2);
+  --line-color: rgba(0, 229, 255, 0.15);
 }
 
-.borderBlack {
-  @apply border border-black/10;
+/* HUD grid overlay — applied to sections that need it */
+.hud-grid {
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
+
+/* Subtle scan-line overlay */
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 229, 255, 0.015) 2px,
+    rgba(0, 229, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* HUD corner brackets */
+.hud-bracket {
+  position: relative;
+}
+.hud-bracket::before,
+.hud-bracket::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(0, 229, 255, 0.4);
+  border-style: solid;
+}
+.hud-bracket::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+.hud-bracket::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+/* MDX prose content styles */
+.mdx-content {
+  @apply text-ship-muted leading-relaxed;
+}
+.mdx-content h1,
+.mdx-content h2,
+.mdx-content h3 {
+  @apply font-display uppercase tracking-hud text-ship-text mt-10 mb-4;
+}
+.mdx-content h1 { @apply text-4xl; }
+.mdx-content h2 { @apply text-2xl; }
+.mdx-content h3 { @apply text-xl; }
+.mdx-content p { @apply mb-4 text-ship-muted; }
+.mdx-content a {
+  @apply text-hud-cyan underline underline-offset-2 hover:text-hud-teal transition-colors;
+}
+.mdx-content code {
+  @apply font-mono text-sm bg-space-800 text-hud-teal px-1.5 py-0.5 rounded;
+}
+.mdx-content pre {
+  @apply bg-space-900 border border-space-700 rounded p-4 overflow-x-auto my-6;
+}
+.mdx-content pre code {
+  @apply bg-transparent px-0 py-0 text-ship-text;
+}
+.mdx-content ul { @apply list-disc list-inside mb-4 space-y-1; }
+.mdx-content ol { @apply list-decimal list-inside mb-4 space-y-1; }
+.mdx-content li { @apply text-ship-muted; }
+.mdx-content blockquote {
+  @apply border-l-2 border-hud-cyan/40 pl-4 italic text-ship-muted my-6;
+}
+.mdx-content hr {
+  @apply border-space-700 my-8;
+}
+.mdx-content strong { @apply text-ship-text font-semibold; }
+
+.borderBlack {
+  @apply border border-space-700;
+}
+
 .stars-anim {
   animation: twinkle 2.7s ease infinite alternate;
 }
 @keyframes twinkle {
-  0% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
 }
+
 .montserrat {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
+

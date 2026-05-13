@@ -3,20 +3,6 @@ import { toolsData } from "../data";
 import { useSectionInView } from "../hooks";
 import { motion } from "framer-motion";
 
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.05 * index,
-    },
-  }),
-};
-
 export default function Skills() {
   const { ref } = useSectionInView("Skills");
 
@@ -24,27 +10,31 @@ export default function Skills() {
     <section
       id="tools"
       ref={ref}
-      className="mb-28 px-12 max-w-3xl mx-auto sticky top-20 scroll-mt-28 text-center sm:mb-40"
+      className="relative mb-28 px-6 sm:px-12 max-w-5xl mx-auto scroll-mt-28 sm:mb-40"
     >
-      <SectionHeading text="Tools" />
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
+      <SectionHeading text="Systems" label="04 — TECH STACK" />
+
+      <ul className="flex flex-wrap gap-4">
         {toolsData.map((tool, index) => (
           <motion.li
-            className="size-6"
+            className="relative group"
             key={index}
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{
-              once: true,
-            }}
-            custom={index}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.03 * index, duration: 0.4 }}
             data-blobity-tooltip={tool.tooltip}
             data-blobity-offset-x={3}
             data-blobity-offset-y={0}
             data-blobity-magnetic="false"
           >
-            <img src={tool.icon} alt={`${tool.tooltip} logo`} />
+            <div className="w-10 h-10 border border-space-700 group-hover:border-hud-cyan/40 bg-space-900 p-1.5 transition-colors duration-200">
+              <img
+                src={tool.icon}
+                alt={`${tool.tooltip} logo`}
+                className="w-full h-full object-contain"
+              />
+            </div>
           </motion.li>
         ))}
       </ul>

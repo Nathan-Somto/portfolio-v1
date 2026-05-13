@@ -1,0 +1,68 @@
+---
+title: "Automating the Boring Stuff with n8n"
+date: "2026-04-14"
+tags: ["n8n", "AI", "Automation", "Webhooks"]
+excerpt: "n8n changed how I think about workflows. Here's how I built an automated lead-qualification pipeline that routes, scores, and responds — with zero manual intervention."
+category: "AI Automation"
+---
+
+# Automating the Boring Stuff with n8n
+
+**STARDATE:** 2026.04.14  
+**STATUS:** Deployed  
+**MISSION:** AI Automation — Lead Qualification Pipeline  
+
+---
+
+## The Problem
+
+A client was manually reviewing every contact form submission, copying data into a spreadsheet, tagging leads by intent, and drafting personalised replies. It was taking 2–3 hours a day.
+
+The data was already there. The patterns were obvious. The only thing missing was a system to act on them automatically.
+
+Enter n8n.
+
+---
+
+## The Workflow Architecture
+
+```
+Webhook Trigger
+  └─ HTTP Request (score with OpenAI)
+       └─ Switch (route by score)
+            ├─ HIGH: Create CRM record → Send personalised email
+            ├─ MED:  Add to nurture list → Send follow-up after 48h
+            └─ LOW:  Log to sheet → No immediate action
+```
+
+Three branches. One trigger. No human in the loop.
+
+---
+
+## The Scoring Node
+
+The key is the OpenAI call. I send the message body with a structured prompt asking for a JSON response:
+
+```json
+{
+  "score": 85,
+  "intent": "ready-to-buy",
+  "summary": "Looking to build a SaaS product, has budget, needs full-stack dev"
+}
+```
+
+n8n's `Code` node then parses that JSON and routes the `Switch` node based on `score`.
+
+---
+
+## What I Learned
+
+**n8n is not a toy.** It handles complex branching, error paths, retry logic, and credential management. Once you stop thinking of it as "Zapier with a self-hosted option" and start treating it as a programmable workflow engine, it becomes genuinely powerful.
+
+The hardest part wasn't the code — it was defining the routing logic clearly enough that an LLM could act on it reliably. Prompt engineering as system design.
+
+Next: hooking this into a Telegram bot for real-time notifications when a high-score lead comes in.
+
+---
+
+*End of log.*

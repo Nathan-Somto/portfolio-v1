@@ -1,0 +1,77 @@
+---
+title: "The Stack I'm Building: AI Meets DevOps"
+date: "2026-04-21"
+tags: ["AI", "DevOps", "Docker", "n8n", "Architecture"]
+excerpt: "AI automation workflows and DevOps pipelines are converging. Here's the architecture I'm developing to deploy, monitor, and iterate on AI-powered systems — and why the two disciplines are inseparable."
+category: "AI and DevOps"
+---
+
+# The Stack I'm Building: AI Meets DevOps
+
+**STARDATE:** 2026.04.21  
+**STATUS:** In Progress  
+**MISSION:** Convergence Architecture  
+
+---
+
+## Why These Two Disciplines Belong Together
+
+Most conversations treat AI development and DevOps as separate tracks. Train your model over here. Set up your pipelines over there. But the moment you start deploying AI-powered automation at any meaningful scale, the separation breaks down.
+
+An n8n workflow that calls an LLM is a service. It needs:
+
+- A runtime environment (container)
+- Environment variable management (secrets)
+- Uptime monitoring (health checks)
+- Version control for prompts (yes, prompts are code)
+- A rollback path when the model starts hallucinating
+
+That's a DevOps problem.
+
+---
+
+## The Architecture (Current State)
+
+```
+┌─────────────────────────────────────────┐
+│           Ingress (Nginx)               │
+└──────────────┬──────────────────────────┘
+               │
+    ┌──────────▼──────────┐
+    │   n8n (Docker)      │  ← Automation workflows
+    │   port: 5678        │
+    └──────────┬──────────┘
+               │
+    ┌──────────▼──────────┐    ┌────────────────────┐
+    │   App Services      │    │   OpenAI / Claude  │
+    │   (Node / Next.js)  │───►│   API calls        │
+    └──────────┬──────────┘    └────────────────────┘
+               │
+    ┌──────────▼──────────┐
+    │   Postgres (Docker) │
+    └─────────────────────┘
+```
+
+Everything runs in Docker Compose locally. The goal is a VPS deployment with the same compose file, fronted by Nginx, managed via GitHub Actions.
+
+---
+
+## Prompts as Code
+
+This is the insight I keep coming back to: **prompts are configuration files.** They should be versioned, reviewed, and deployed — not hardcoded in a database field or pasted into a UI.
+
+My current approach: prompts live in `.txt` files in a `/prompts` directory, committed to the repo, injected into containers as environment variables or mounted volumes. That way, a prompt change is a PR, not a manual database update.
+
+---
+
+## What's Next
+
+1. **CI/CD for n8n workflows** — export workflows as JSON, version them in Git, deploy on merge
+2. **Observability** — structured logging from n8n → a lightweight log aggregator
+3. **Model fallbacks** — if OpenAI is down, route to a local Ollama instance
+
+The mission is not to build AI features. It's to build AI systems — with the same rigour I'd apply to any production service.
+
+---
+
+*End of log.*

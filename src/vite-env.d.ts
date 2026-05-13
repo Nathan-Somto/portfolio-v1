@@ -9,3 +9,22 @@ interface ImportMetaEnv {
 interface ImportMeta {
     readonly env: ImportMetaEnv
 }
+
+declare module '*.mp3' {
+  const src: string;
+  export default src;
+}
+
+declare module '*.mdx' {
+  import type React from 'react';
+  export const frontmatter: {
+    title: string;
+    date: string;
+    tags: string[];
+    excerpt: string;
+    category: string;
+    [key: string]: unknown;
+  };
+  const MDXContent: React.ComponentType;
+  export default MDXContent;
+}

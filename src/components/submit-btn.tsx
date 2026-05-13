@@ -1,21 +1,18 @@
-
 import { FaPaperPlane } from "react-icons/fa";
 
-
 export default function SubmitBtn({ pending }: { pending: boolean }) {
-  console.log('pending', pending);
   return (
     <button
       type="submit"
-      className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem]   rounded-full outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 bg-white bg-opacity-10 disabled:scale-100 disabled:bg-opacity-65"
+      className="group flex items-center justify-center gap-2 h-12 px-8 font-mono text-[11px] tracking-mission uppercase border border-hud-cyan/40 text-hud-cyan hover:bg-hud-cyan/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       disabled={pending}
     >
       {pending ? (
-        <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
+        <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-hud-cyan" />
       ) : (
         <>
-          Submit{" "}
-          <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />{" "}
+          TRANSMIT
+          <FaPaperPlane className="text-xs opacity-70 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
         </>
       )}
     </button>

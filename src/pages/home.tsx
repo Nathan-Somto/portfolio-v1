@@ -9,12 +9,19 @@ import Tools from "../components/tools";
 import StarParticles from "../components/stars";
 import { motion } from 'framer-motion'
 import useBlobity from "blobity/lib/react/useBlobity";
-import GithubStats from "../sections/github-stats";
+import Telemetry from "../sections/github-stats";
 import React from "react";
-import SpotifyStats from "../sections/spotify-stats";
+import { useLocation } from "react-router-dom";
+import { useSoundContext } from "../context/sound";
 export default function Home() {
+  const location = useLocation();
+  const { startContinuousSound } = useSoundContext();
+  const fromIntro = !!(location.state as { fromIntro?: boolean } | null)?.fromIntro;
+
   React.useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+    startContinuousSound();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useBlobity({
     color: '#fff',
@@ -38,16 +45,9 @@ export default function Home() {
   })
   return (
     <motion.div
-      initial={{
-        opacity: 0
-      }}
-      animate={{
-        opacity: 1
-      }}
-      transition={{
-        duration: 0.65,
-        ease: 'easeIn'
-      }}
+      initial={{ opacity: fromIntro ? 1 : 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: fromIntro ? 0 : 0.65, ease: 'easeIn' }}
     >
       <StarParticles />
       <Navbar />
@@ -57,11 +57,11 @@ export default function Home() {
         <Projects />
         <Experience />
         <Tools />
-        <GithubStats />
-        <SpotifyStats />
+        <Telemetry />
         <Contact />
       </main>
       <Footer />
     </motion.div>
   );
 }
+

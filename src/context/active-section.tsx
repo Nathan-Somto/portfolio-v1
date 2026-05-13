@@ -1,8 +1,7 @@
-import { links } from "../data";
-
 import React, { useState, createContext, useContext } from "react";
 
-export type SectionName = (typeof links)[number]["name"];
+/** All sections tracked by the intersection observer. */
+export type SectionName = "Home" | "Projects" | "Experience" | "Skills" | "Contact";
 type ActiveSectionContextProviderProps = {
   children: React.ReactNode;
 };
