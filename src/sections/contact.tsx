@@ -4,113 +4,136 @@ import SubmitBtn from "../components/submit-btn";
 import toast from "react-hot-toast";
 import React from "react";
 import emailjs from '@emailjs/browser';
+
 export default function Contact() {
   const formRef = React.useRef<HTMLFormElement>(null);
   const [isPending, setPending] = React.useState(false);
   const { ref } = useSectionInView("Contact");
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
     if (!formRef.current) return;
 
     const formData = new FormData(formRef.current);
-
     const name = formData.get("from_name") as string;
     const email = formData.get("from_email") as string;
     const message = formData.get("message") as string;
     formData.set('to_email', 'nturner560@gmail.com');
     formData.set('to_name', 'Mkparu Somtochi');
+
     if (!name || !email || !message) {
       toast.error("Please fill out all fields.");
       return;
     }
     if (message.split(' ').length < 5) {
-      toast.error("the message must contain at least 10 words")
+      toast.error("The message must contain at least 5 words.");
       return;
     }
+
     setPending(true);
     try {
-
-      if (!formRef.current) return;
-      //console.log({ name, email, message });
       const config = {
         serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
         templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      }
-      const res = await emailjs
-        .sendForm(
-          config.serviceId,
-          config.templateId,
-          formRef.current,
-          {
-            publicKey: config.publicKey
-          }
-        );
-      console.log("the res", res);
-      toast.success("Email sent successfully!");
-    }
-    catch (err) {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      };
+      await emailjs.sendForm(
+        config.serviceId,
+        config.templateId,
+        formRef.current,
+        { publicKey: config.publicKey }
+      );
+      toast.success("Transmission received.");
+      formRef.current.reset();
+    } catch (err) {
       console.error("Email submission error:", err);
-      toast.error("Email failed to send. Please try again.");
-    }
-    finally {
+      toast.error("Transmission failed. Please try again.");
+    } finally {
       setPending(false);
     }
-
   }
-
-
-
 
   return (
     <section
       id="contact"
       ref={ref}
-      className="mb-28 px-12 bg-black  pb-14 mx-auto sticky top-28 pt-14 scroll-mt-28 text-center sm:mb-40"
+      className="relative mb-28 sm:mb-40 px-6 sm:px-12 scroll-mt-28"
     >
-      <div className="w-[min(100%,42rem)] mx-auto">
-        <SectionHeading text="Contact" />
+      {/* Grid overlay */}
+      <div className="absolute inset-0 hud-grid opacity-20 pointer-events-none" />
 
-        <p className="-mt-6 opacity-70">
-          Please contact me directly at{" "}
-          <a className="underline" href="mailto:mkparusomtochi26@gmail.com">
+      <div className="relative z-10 max-w-2xl mx-auto">
+        <SectionHeading text="Contact" label="05 — OPEN CHANNEL" />
+
+        <p className="font-mono text-ship-muted text-sm tracking-hud mb-8">
+          DIRECT FREQUENCY:{" "}
+          <a
+            className="text-hud-cyan hover:text-hud-teal transition-colors underline underline-offset-2"
+            href="mailto:mkparusomtochi26@gmail.com"
+          >
             mkparusomtochi26@gmail.com
-          </a>{" "}
-          or through this form.
+          </a>
+          {"  "}— or transmit via the form below.
         </p>
 
-        <form
-          ref={formRef}
-          className="mt-10 flex flex-col dark:text-black"
-          onSubmit={handleSubmit}
-        >
-          <input
-            className="h-14 px-4 rounded-lg mb-5 borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="from_name"
-            type="text"
-            required
-            maxLength={500}
-            placeholder="Your full name"
-          />
-          <input
-            className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="from_email"
-            type="email"
-            required
-            maxLength={500}
-            placeholder="Your email"
-          />
-          <textarea
-            className="h-52 my-5  resize-none rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="message"
-            placeholder="Your message"
-            required
-            maxLength={5000}
-          />
-          <SubmitBtn pending={isPending} />
-        </form>
+        {/* HUD Panel */}
+        <div className="hud-bracket bg-space-900 border border-space-700 p-6 sm:p-10">
+          <p className="font-mono text-[10px] tracking-mission uppercase text-hud-cyan/60 mb-6">
+            ◆ ESTABLISHING COMMUNICATION LINK
+          </p>
+
+          <form ref={formRef} className="flex flex-col gap-5" onSubmit={handleSubmit}>
+            {/* Name */}
+            <div>
+              <label className="font-mono text-[10px] tracking-mission uppercase text-ship-faint block mb-2">
+                TRANSMISSION SOURCE — NAME
+              </label>
+              <input
+                className="w-full h-12 px-4 bg-space-800 border border-space-700 focus:border-hud-cyan/50 text-ship-text text-sm font-sans outline-none transition-colors placeholder:text-ship-faint"
+                name="from_name"
+                type="text"
+                required
+                maxLength={500}
+                placeholder="Your name"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="font-mono text-[10px] tracking-mission uppercase text-ship-faint block mb-2">
+                FREQUENCY — EMAIL
+              </label>
+              <input
+                className="w-full h-12 px-4 bg-space-800 border border-space-700 focus:border-hud-cyan/50 text-ship-text text-sm font-sans outline-none transition-colors placeholder:text-ship-faint"
+                name="from_email"
+                type="email"
+                required
+                maxLength={500}
+                placeholder="your@email.com"
+              />
+            </div>
+
+            {/* Message */}
+            <div>
+              <label className="font-mono text-[10px] tracking-mission uppercase text-ship-faint block mb-2">
+                PAYLOAD — MESSAGE
+              </label>
+              <textarea
+                className="w-full h-40 px-4 py-3 bg-space-800 border border-space-700 focus:border-hud-cyan/50 text-ship-text text-sm font-sans outline-none transition-colors resize-none placeholder:text-ship-faint"
+                name="message"
+                required
+                maxLength={5000}
+                placeholder="Your message..."
+              />
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <SubmitBtn pending={isPending} />
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
 }
+

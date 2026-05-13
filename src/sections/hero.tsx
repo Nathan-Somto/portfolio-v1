@@ -17,6 +17,9 @@ export default function Header() {
   const textX = useTransform(scrollY, [0, 300], ['0%', '-200%']);
   const figureHeight = useTransform(scrollY, [0, 250], [350, window.innerHeight]);
   const figureWidth = useTransform(scrollY, [0, 250], [300, window.innerWidth]);
+  // "Who Am I?" materialises as the name slides out
+  //const whoAmIOpacity = useTransform(scrollY, [120, 270], [0, 1]);
+  /* const whoAmIX = useTransform(scrollY, [120, 290], ['55%', '0%']); */
   return (
     <div id="home" className=' ' ref={ref}>
       <motion.header
@@ -26,20 +29,28 @@ export default function Header() {
           scale: containerScale,
           willChange: 'transform filter',
         }}
-        className=' px-2  min-h-screen z-[10] top-0  bg-[#202020] pt-20 relative w-full  justify-between flex  overflow-hidden'>
-        <div className="bg-[#202020]/30 backdrop-blur-lg absolute inset-0 pointer-events-auto z-[2] h-full w-full"></div>
+        className=' px-2  min-h-screen z-[10] top-0  bg-space-900 pt-20 relative w-full  justify-between flex  overflow-hidden'>
+        <div className="bg-space-900/30 backdrop-blur-lg absolute inset-0 pointer-events-auto z-[2] h-full w-full"></div>
+        {/* HUD grid overlay */}
+        <div className="absolute inset-0 bg-grid-hud bg-grid-40 opacity-30 pointer-events-none z-[1]" />
         <motion.h2
           data-blobity-radius={70}
           data-blobity-size={100}
           style={{
             x: textX,
             willChange: 'transform'
-          }} className='uppercase text-[clamp(2rem,10vw,10rem)] text-center  flex-shrink-0 absolute top-20 font-medium tracking-tighter w-full z-[10] whitespace-nowrap'>Nathan Somto</motion.h2>
+          }} className='uppercase text-[clamp(2rem,10vw,10rem)] text-center  flex-shrink-0 absolute top-20 font-display tracking-tighter w-full z-[10] whitespace-nowrap text-ship-text'>Nathan Somto</motion.h2>
+        {/* "Who Am I?" — materialises as name exits */}
+       {/*  <motion.h2
+          style={{ opacity: whoAmIOpacity, x: whoAmIX, willChange: 'transform opacity', textShadow: '0 0 60px rgba(0,229,255,0.45)' }}
+          className='uppercase text-[clamp(2rem,10vw,10rem)] text-center flex-shrink-0 absolute top-20 font-display tracking-tighter w-full z-[11] whitespace-nowrap text-hud-cyan pointer-events-none'
+          aria-hidden="true"
+        >Who Am I?</motion.h2> */}
         <motion.figure style={{
           height: figureHeight,
           width: figureWidth,
         }}
-          data-blobity-tooltip="Agba Dev"
+          data-blobity-tooltip="Capt. Somto"
           data-blobity-offset-x={20}
           data-blobity-offset-y={4}
           className=' h-[300px] w-[250px] lg:h-[400px] lg:w-[300px] object-cover rounded-md absolute top-40  grayscale hover:grayscale-0 ease-in transition-all overflow-hidden inset-x-0 mx-auto z-[8]'>
@@ -49,15 +60,15 @@ export default function Header() {
             className='w-full h-full object-cover absolute object-center'
 
           />
-          <div className="bg-black/50 w-full h-full absolute top-0 left-0 z-[9]"></div>
+          <div className="bg-space-950/60 w-full h-full absolute top-0 left-0 z-[9]"></div>
         </motion.figure>
         <motion.div
           style={{
             opacity: btmBrightness
           }}
           className="flex flex-col z-[8] self-end text-left lg:flex-row lg:justify-between items-center h-20 w-full px-4">
-          <p className="text-sm sm:text-lg font-light">Full-Stack Developer based in Lagos, Nigeria.</p>
-          <p className="text-sm sm:text-lg font-light">Focuses on web and mobile applications</p>
+          <p className="font-mono text-ship-muted text-xs tracking-hud">Full-Stack Developer based in Lagos, Nigeria.</p>
+          <p className="font-mono text-ship-muted text-xs tracking-hud">Focuses on web and mobile applications</p>
         </motion.div>
       </motion.header>
     </div>
